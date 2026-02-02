@@ -41,15 +41,12 @@ Open [http://localhost:8000](http://localhost:8000) in your browser.
 ### 2. Customizing Graphs (`examples.py`)
 Modify `examples.py` to add your own data. The visualizer auto-detects functions returning a `networkx` graph.
 
-```python
 def get_my_graph():
     G = nx.DiGraph()
-    G.add_node("Hello", extra_style={"color": "cyan", "glow": True})
+    G.add_node("Hello", extra_style={"color": "cyan"})
+    G.add_node("World", extra_style={"color": "magenta", "glow": True})
     G.add_edge("Hello", "World", extra_style={"arrow": True})
     return G
-```
-
----
 
 ## 🛠️ Configuration
 
