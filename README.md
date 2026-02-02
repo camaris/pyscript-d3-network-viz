@@ -3,9 +3,16 @@
 > **Visualize complex Python NetworkX graphs directly in your browser.**
 > This is the public distribution build of the PyScript D3 Network Visualizer.
 
+# NOTE
+
+**VIBE CODED WITH AI** This project is the result of my first attempt to vibe code with AI. I used Gemini 3 Pro to generate the code and Antigravity to help me with the development process. It uses PyScript to run the python code in the browser and D3.js to create the visualization.
+
+## Demo
+
+The code includes a simple demo of a knowledge graph with nodes and edges, showing all possible styling options (colors, icons, halos, etc.).
 ![Knowledge Graph Screenshot](screenshot.png)
 
-[Live Demo](https://camaris.github.io/pyscript-d3-network-viz/) (If configured)
+[Live Demo](https://camaris.github.io/pyscript-d3-network-viz/)
 
 ---
 
