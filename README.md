@@ -3,6 +3,8 @@
 > **Visualize complex Python NetworkX graphs directly in your browser.**
 > This is the public distribution build of the PyScript D3 Network Visualizer.
 
+![Knowledge Graph Screenshot](screenshot.png)
+
 [Live Demo](https://camaris.github.io/pyscript-d3-network-viz/) (If configured)
 
 ---
