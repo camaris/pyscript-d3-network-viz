@@ -1,0 +1,322 @@
+/* src/style.css */
+:root {
+    --bg-color: #0f172a;
+    /* Slate 900 */
+    --text-color: #f1f5f9;
+    /* Slate 100 */
+    --text-muted: #94a3b8;
+    /* Slate 400 */
+    --node-color: #3b82f6;
+    /* Blue 500 */
+    --node-gradient: linear-gradient(135deg, #60a5fa, #2563eb);
+    --link-color: #475569;
+    /* Slate 600 */
+    --highlight-color: #f59e0b;
+    /* Amber 500 */
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    --glass-bg: rgba(15, 23, 42, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow: hidden;
+    /* Prevent scrollbars */
+}
+
+/* Glassmorphism Panel for Title & Controls */
+#ui-layer {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    /* Changed from 20px to 0 for sliding logic */
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    pointer-events: none;
+    /* Let clicks pass through around the panel */
+}
+
+/* Toggle Button */
+.btn-icon {
+    pointer-events: auto;
+    padding: 0.8rem 1.2rem;
+    border-radius: 30px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-color);
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.btn-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    pointer-events: auto;
+    min-width: 250px;
+
+    /* Transition Logic */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.glass-panel.hidden {
+    transform: translateX(-120%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-close {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 5px;
+    transition: color 0.2s;
+}
+
+.btn-close:hover {
+    color: #fff;
+}
+
+h2 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.25rem;
+    letter-spacing: -0.025em;
+    background: linear-gradient(to right, #fff, #94a3b8);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.controls {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.control-group label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: var(--node-color);
+    margin-top: -6px;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--glass-bg);
+    color: var(--text-color);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1.5rem;
+    padding-right: 2.5rem;
+}
+
+select:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+select:focus {
+    border-color: var(--node-color);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+select option {
+    background-color: #0f172a;
+    /* Hardcoded dark bg for options since they don't support glassmorphism well */
+    color: var(--text-color);
+}
+
+.btn {
+    margin-top: 0.5rem;
+    padding: 0.6rem 1rem;
+    background: var(--node-gradient);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.4);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Loading Indicator */
+#loading-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+    background: rgba(15, 23, 42, 0.8);
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--glass-border);
+    animation: pulse 2s infinite;
+    z-index: 50;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}
+
+#graph {
+    width: 100vw;
+    height: 100vh;
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+}
+
+svg:active {
+    cursor: grabbing;
+}
+
+/* Graph Elements */
+.node circle {
+    fill: var(--node-color);
+    stroke: rgba(255, 255, 255, 0.8);
+    stroke-width: 1.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.node circle:hover {
+    stroke: #fff;
+    stroke-width: 3px;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+    r: 35;
+    /* Check if this overrides inline style or not, logic might be needed here */
+}
+
+.node text {
+    font-size: 12px;
+    font-weight: 500;
+    pointer-events: none;
+    font-family: var(--font-family);
+    fill: var(--text-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    /* Better readability on dark bg */
+    opacity: 0.9;
+    transition: opacity 0.2s;
+}
+
+.link {
+    stroke: var(--link-color);
+    stroke-opacity: 0.4;
+    stroke-width: 1.5px;
+    transition: stroke-width 0.2s;
+}
+
+.link:hover {
+    stroke-opacity: 0.8;
+}
