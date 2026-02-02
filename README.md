@@ -62,4 +62,4 @@ If you are looking for the full source code history or want to contribute, pleas
 ---
 
 ## 📜 License
-AGPL-3.0
+GNU Affero General Public License v3.0
